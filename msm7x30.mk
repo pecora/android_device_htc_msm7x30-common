@@ -69,7 +69,8 @@ PRODUCT_PACKAGES += \
     libgenlock \
     libmemalloc \
     liboverlay \
-    libQcomUI
+    libQcomUI \
+    libtilerenderer
 
 # Omx
 PRODUCT_PACKAGES += \
