@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit Language Files
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -50,18 +53,23 @@ PRODUCT_COPY_FILES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    libaudioutils
+    audio_policy.msm7x30 \
+    audio.primary.msm7x30 \
+    libaudioutils \
+    libtinyalsa
 
 # Video
 PRODUCT_PACKAGES += \
     copybit.msm7x30 \
     gralloc.msm7x30 \
-    hwcomposer.msm7x30 \
+    hwcomposer.msm7x30
+
+# Qcom
+PRODUCT_PACKAGES += \
     libgenlock \
     libmemalloc \
     liboverlay \
-    libQcomUI \
-    libtilerenderer
+    libQcomUI
 
 # Omx
 PRODUCT_PACKAGES += \
@@ -75,6 +83,12 @@ PRODUCT_PACKAGES += \
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
+    Basic \
+    HoloSpiralWallpaper \
+    MagicSmokeWallpapers \
+    NoiseField \
+    Galaxy4 \
+    PhaseBeam \
     LiveWallpapers \
     LiveWallpapersPicker \
     VisualizationWallpapers \
@@ -85,13 +99,28 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     setup_fs
 
-# for bugmailer
-ifneq ($(TARGET_BUILD_VARIANT),user)
-    PRODUCT_PACKAGES += send_bug
-    PRODUCT_COPY_FILES += \
-        system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-        system/extras/bugmailer/send_bug:system/bin/send_bug
-endif
+# Applications
+PRODUCT_PACKAGES += \
+    Camera \
+    Development \
+    DSPManager \
+    FileManager \
+    LatinIME \
+    Mms \
+    Stk \
+    VideoEditor \
+    VoiceDialer \
+    SpareParts \
+    SyncProvider \
+    Torch \
+    Superuser \
+    Superuser.apk \
+    su
+
+# Disable visual strict mode and secure on all builds
+PRODUCT_DEFAULT_PROPERTY += \
+    persist.sys.strictmode.visual=0 \
+    ro.secure=0
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
