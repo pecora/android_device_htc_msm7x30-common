@@ -103,7 +103,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Camera \
     Development \
-    DSPManager \
     FileManager \
     LatinIME \
     Mms \
@@ -116,6 +115,13 @@ PRODUCT_PACKAGES += \
     Superuser \
     Superuser.apk \
     su
+
+# CyanogenMod Packages
+PRODUCT_PACKAGES += \
+    CMSettings \
+    DSPManager \
+    libcyanogen-dsp \
+    audio_effects.conf
 
 # Disable visual strict mode and secure on all builds
 PRODUCT_DEFAULT_PROPERTY += \
