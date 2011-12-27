@@ -127,14 +127,6 @@ PRODUCT_PACKAGES += \
     gralloc.msm7x30 \
     hwcomposer.msm7x30
 
-# Qcom
-PRODUCT_PACKAGES += \
-    libgenlock \
-    libmemalloc \
-    liboverlay \
-    libQcomUI \
-    libtilerenderer
-
 # Omx
 PRODUCT_PACKAGES += \
     libOmxCore \
