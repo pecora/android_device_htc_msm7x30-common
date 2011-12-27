@@ -32,23 +32,7 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 TARGET_SPECIFIC_HEADER_PATH := device/htc/msm7x30-common/include
 
-# Wifi related defines
-
-## Original, tested configuration for WiFi
-# BOARD_WPA_SUPPLICANT_DRIVER      := WEXT
-# WPA_SUPPLICANT_VERSION           := VER_0_8_X
-# BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
-# BOARD_HOSTAPD_DRIVER             := WEXT
-# BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_wext
-# BOARD_WLAN_DEVICE                := bcm4329
-# WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcm4329.ko"
-# WIFI_DRIVER_FW_STA_PATH          := "/vendor/firmware/fw_bcm4329.bin"
-# WIFI_DRIVER_FW_AP_PATH           := "/vendor/firmware/fw_bcm4329_apsta.bin"
-# WIFI_DRIVER_MODULE_ARG           := "firmware_path=/vendor/firmware/fw_bcm4329.bin nvram_path=/proc/calibration"
-# WIFI_DRIVER_MODULE_NAME          := "bcm4329"
-##
-
-## Modification of CM Version
+# Merged Wifi Defines
 BOARD_WPA_SUPPLICANT_DRIVER      := WEXT
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
@@ -65,7 +49,6 @@ WIFI_DRIVER_MODULE_ARG           := "firmware_path=/vendor/firmware/fw_bcm4329.b
 WIFI_DRIVER_MODULE_NAME          := "bcm4329"
 BOARD_WLAN_DEVICE_REV            := bcm4329
 WIFI_BAND                        := 802_11_ABGN
-##
 
 # Older Touchscreen Support
 # BOARD_USE_LEGACY_TOUCHSCREEN := true
