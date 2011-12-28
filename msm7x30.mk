@@ -179,10 +179,14 @@ PRODUCT_PACKAGES += \
     libcyanogen-dsp \
     audio_effects.conf
 
-# Disable visual strict mode and secure on all builds
+# Disable system restrictions for all builds
 PRODUCT_DEFAULT_PROPERTY += \
     persist.sys.strictmode.visual=0 \
     ro.secure=0
+
+# Toggle to enable and disable tile rendering
+PRODUCT_DEFAULT_PROPERTY += \
+    debug.enabletr=true
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
