@@ -185,8 +185,12 @@ PRODUCT_DEFAULT_PROPERTY += \
     persist.sys.strictmode.visual=0 \
     ro.secure=0
 
-# Toggle to enable and disable tile rendering
+# Qualcomm Display Properties
 PRODUCT_DEFAULT_PROPERTY += \
+    debug.sf.hw=1 \
+    debug.composition.type=dyn \
+    ro.sf.compbypass.enable=1 \
+    com.qc.hardware=true \
     debug.enabletr=true
 
 # we have enough storage space to hold precise GC data
