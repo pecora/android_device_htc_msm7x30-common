@@ -34,13 +34,8 @@ PRODUCT_COPY_FILES += \
 
 # Firmware
 PRODUCT_COPY_FILES += \
-    device/htc/msm7x30-common/firmware/bcm4329.hcd:system/etc/firmware/bcm4329.hcd \
-    device/htc/msm7x30-common/firmware/fw_bcm4329.bin:system/etc/firmware/fw_bcm4329.bin \
-    device/htc/msm7x30-common/firmware/fw_bcm4329_apsta.bin:system/etc/firmware/fw_bcm4329_apsta.bin \
-    device/htc/msm7x30-common/firmware/default.acdb:system/etc/firmware/default.acdb \
-    device/htc/msm7x30-common/firmware/default_org.acdb:system/etc/firmware/default_org.acdb \
-    device/htc/msm7x30-common/firmware/default_mfg.acdb:system/etc/firmware/default_mfg.acdb \
-    device/htc/msm7x30-common/firmware/mp2_dec_mc.fw:system/etc/firmware/mp2_dec_mc.fw \
+    device/htc/msm7x30-common/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
+    device/htc/msm7x30-common/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
     device/htc/msm7x30-common/firmware/vidc_720p_command_control.fw:system/etc/firmware/vidc_720p_command_control.fw \
     device/htc/msm7x30-common/firmware/vidc_720p_h263_dec_mc.fw:system/etc/firmware/vidc_720p_h263_dec_mc.fw \
     device/htc/msm7x30-common/firmware/vidc_720p_h264_dec_mc.fw:system/etc/firmware/vidc_720p_h264_dec_mc.fw \
