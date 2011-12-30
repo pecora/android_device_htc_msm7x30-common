@@ -120,12 +120,12 @@ PRODUCT_PACKAGES += \
     audio_effects.conf
 
 # Disable system restrictions for all builds
-PRODUCT_DEFAULT_PROPERTY += \
+PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.visual=0 \
     ro.secure=0
 
 # Qualcomm Display Properties
-PRODUCT_DEFAULT_PROPERTY += \
+PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.hw=1 \
     debug.composition.type=dyn \
     ro.sf.compbypass.enable=1 \
