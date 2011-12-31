@@ -119,19 +119,6 @@ PRODUCT_PACKAGES += \
     libcyanogen-dsp \
     audio_effects.conf
 
-# Disable system restrictions for all builds
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.strictmode.visual=0 \
-    ro.secure=0
-
-# Qualcomm Display Properties
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.hw=1 \
-    debug.composition.type=dyn \
-    ro.sf.compbypass.enable=1 \
-    com.qc.hardware=true \
-    debug.enabletr=true
-
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
