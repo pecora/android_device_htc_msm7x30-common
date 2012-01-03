@@ -68,6 +68,10 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm7x30 \
     libQcomUI
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm7x30
+
 # Omx
 PRODUCT_PACKAGES += \
     libOmxCore \
