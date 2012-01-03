@@ -69,8 +69,8 @@ PRODUCT_PACKAGES += \
     libQcomUI
 
 # Camera
-PRODUCT_PACKAGES += \
-    camera.msm7x30
+# PRODUCT_PACKAGES += \
+#     camera.msm7x30
 
 # Omx
 PRODUCT_PACKAGES += \
