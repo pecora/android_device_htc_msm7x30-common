@@ -18,6 +18,9 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 PRODUCT_COPY_FILES += \
+    device/htc/msm7x30-common/kernel/init.msm7x30.usb.rc:root/init.msm7x30.usb.rc
+
+PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
