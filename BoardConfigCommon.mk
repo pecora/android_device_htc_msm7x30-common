@@ -101,6 +101,18 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
 
 # TARGET_LEGACY_CAMERA := true
+
+TARGET_CAMERA_WRAPPER := nexus
+
+ifneq ($(TARGET_CAMERA_WRAPPER),)
+
+PRODUCT_COPY_FILES += \
+    device/htc/msm7x30-common/proprietary/libcamera-nexus.so:obj/lib/libcamera-nexus.so \
+    device/htc/msm7x30-common/proprietary/libcamera-nexus.so:obj/lib/libcamera.so \
+    device/htc/msm7x30-common/proprietary/libcamera-nexus.so:/system/lib/libcamera.so
+
+endif
+
 BOARD_EGL_CFG := device/htc/msm7x30-common/egl.cfg
 
 # BOARD_CAMERA_USE_GETBUFFERINFO := true
