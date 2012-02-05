@@ -104,7 +104,6 @@ PRODUCT_PACKAGES += \
 
 # Applications
 PRODUCT_PACKAGES += \
-    Camera \
     Development \
     FileManager \
     LatinIME \
@@ -117,6 +116,10 @@ PRODUCT_PACKAGES += \
     Torch \
     Superuser \
     su
+
+# Prebuilt Camera
+PRODUCT_COPY_FILES += \
+    device/htc/msm7x30-common/system/app/Camera.apk:system/app/Camera.apk
 
 # CyanogenMod Packages
 PRODUCT_PACKAGES += \
