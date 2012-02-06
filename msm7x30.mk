@@ -94,8 +94,7 @@ PRODUCT_PACKAGES += \
     PhaseBeam \
     LiveWallpapers \
     LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
+    VisualizationWallpapers
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -106,13 +105,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Development \
     FileManager \
-    LatinIME \
     Mms \
     Stk \
-    VideoEditor \
     VoiceDialer \
     SpareParts \
-    SyncProvider \
     Torch \
     Superuser \
     su
