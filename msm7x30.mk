@@ -123,6 +123,29 @@ PRODUCT_PACKAGES += \
     libcyanogen-dsp \
     audio_effects.conf
 
+# Google Applications
+PRODUCT_COPY_FILES += \
+    vendor/twisted/google/app/GenieWidget.apk:system/app/GenieWidget.apk \
+    vendor/twisted/google/app/Street.apk:system/app/Street.apk \
+    vendor/twisted/google/app/Thinkfree.apk:system/app/Thinkfree.apk \
+    vendor/twisted/google/app/Videos.apk:system/app/Videos.apk \
+    vendor/twisted/google/app/VoiceSearch.apk:system/app/VoiceSearch.apk
+
+# Google Libraries
+PRODUCT_COPY_FILES += \
+    vendor/twisted/google/lib/libfacelock_jni.so:system/lib/libfacelock_jni.so \
+    vendor/twisted/google/lib/libfilterpack_facedetect.so:system/lib/libfilterpack_facedetect.so \
+    vendor/twisted/google/lib/libflint_engine_jni_api.so:system/lib/libflint_engine_jni_api.so
+
+# Google Vendor
+PRODUCT_COPY_FILES += \
+    vendor/twisted/google/vendor/firmware/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so \
+    vendor/twisted/google/vendor/pittpatt:system/vendor/pittpatt
+
+# Google Customization
+PRODUCT_COPY_FILES += \
+    vendor/twisted/twisted/media/bootanimation.zip:system/media/bootanimation.zip
+
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
