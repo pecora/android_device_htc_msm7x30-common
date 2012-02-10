@@ -84,10 +84,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
-# Prebuilt Camera
-PRODUCT_COPY_FILES += \
-    device/htc/msm7x30-common/system/app/Camera.apk:system/app/Camera.apk
-
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
