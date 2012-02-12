@@ -50,9 +50,13 @@ PRODUCT_COPY_FILES += \
     device/htc/msm7x30-common/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     device/htc/msm7x30-common/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
 
+# egl config file
+PRODUCT_COPY_FILES += \
+    device/htc/msm7x30-common/system/etc/egl.cfg:system/etc/egl.cfg
+
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/htc/msm7x30-common/media_profiles.xml:system/etc/media_profiles.xml
+    device/htc/msm7x30-common/system/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PACKAGE_OVERLAYS += device/htc/msm7x30-common/overlay
 
