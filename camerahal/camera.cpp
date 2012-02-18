@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
- * Copyright (C) 2012 Zhibin Wu, Twisted, Simon Davie
+ * Copyright (C) 2012 Zhibin Wu, Twisted, Nico Kaiser
  *
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
