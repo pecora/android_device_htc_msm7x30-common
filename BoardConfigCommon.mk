@@ -100,8 +100,6 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
 
-TARGET_LEGACY_CAMERA := true
-
 BOARD_EGL_CFG := device/htc/msm7x30-common/system/etc/egl.cfg
 
 # BOARD_CAMERA_USE_GETBUFFERINFO := true
