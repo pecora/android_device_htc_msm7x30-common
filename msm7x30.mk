@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# Inherit msm7x30 Vendor Files
+$(call inherit-product-if-exists, vendor/twisted/twisted-vendor.mk)
+$(call inherit-product-if-exists, vendor/twisted/google-neon.mk)
+$(call inherit-product-if-exists, vendor/twisted/google-vendor.mk)
+
 # Inherit Language Files
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
