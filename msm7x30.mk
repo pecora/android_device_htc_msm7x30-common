@@ -84,9 +84,12 @@ PRODUCT_PACKAGES += \
     camera.msm7x30 \
     Camera
 
-# Omx
+# QCOM OMX
 PRODUCT_PACKAGES += \
+    libstagefrighthw \
     libOmxCore \
+    libmm-omxcore \
+    libdivxdrmdecrypt \
     libOmxVenc \
     libOmxVdec
 
