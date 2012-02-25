@@ -85,13 +85,30 @@
                    width="1280"
                    height="720"
                    frameRate="30" />
-            
+
+            <!--Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="16000"
+                   channels="1" /-->
             <Audio codec="amrnb"
                    bitRate="12200"
                    sampleRate="8000"
                    channels="1" />
         </EncoderProfile>
-        
+
+        <!--EncoderProfile quality="hd" fileFormat="mp4" duration="60">
+            <Video codec="h264"
+                   bitRate="6000000"
+                   width="1280"
+                   height="720"
+                   frameRate="30" />
+
+            <Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="16000"
+                   channels="1" />
+        </EncoderProfile-->
+
         <EncoderProfile quality="high" fileFormat="mp4" duration="60">
             <Video codec="h264"
                    bitRate="3000000"
@@ -99,6 +116,10 @@
                    height="480"
                    frameRate="30" />
 
+            <!--Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="16000"
+                   channels="1" /-->
             <Audio codec="amrnb"
                    bitRate="12200"
                    sampleRate="8000"
@@ -137,6 +158,10 @@
                    height="480"
                    frameRate="30" />
 
+            <!--Audio codec="aac"
+                   bitRate="96000"
+                   sampleRate="16000"
+                   channels="1" /-->
             <Audio codec="amrnb"
                    bitRate="12200"
                    sampleRate="8000"
@@ -191,6 +216,16 @@
         minFrameWidth="176" maxFrameWidth="1280"
         minFrameHeight="144" maxFrameHeight="720"
         minFrameRate="1" maxFrameRate="30" />
+
+    <!--AudioEncoderCap name="aac" enabled="true"
+        minBitRate="8192" maxBitRate="96000"
+        minSampleRate="8000" maxSampleRate="16000"
+        minChannels="1" maxChannels="1" /-->
+
+    <!--AudioEncoderCap name="amrwb" enabled="true"
+        minBitRate="6600" maxBitRate="23050"
+        minSampleRate="16000" maxSampleRate="16000"
+        minChannels="1" maxChannels="1" /-->
 
     <AudioEncoderCap name="amrnb" enabled="true"
         minBitRate="5525" maxBitRate="12200"
