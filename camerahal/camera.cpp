@@ -30,7 +30,7 @@
 #include <unistd.h>
 
 #include <cutils/log.h>
-#include <ui/Overlay.h>
+#include "overlay.h"
 #include <camera/CameraParameters.h>
 #include <hardware/camera.h>
 #include "CameraHardwareInterface.h"
