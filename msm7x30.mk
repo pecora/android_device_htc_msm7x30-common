@@ -63,6 +63,7 @@ PRODUCT_COPY_FILES += \
     device/htc/msm7x30-common/system/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 PRODUCT_PACKAGE_OVERLAYS += device/htc/msm7x30-common/overlay
+PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/dictionaries
 
 # Audio
 PRODUCT_PACKAGES += \
