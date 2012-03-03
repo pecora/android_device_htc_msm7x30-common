@@ -23,6 +23,7 @@
 #define LOG_TAG "CameraHAL"
 
 #define MAX_CAMERAS_SUPPORTED 2
+#define GRALLOC_USAGE_PMEM_PRIVATE_ADSP GRALLOC_USAGE_PRIVATE_0
 
 #include <fcntl.h>
 #include <stdint.h>
@@ -374,6 +375,9 @@ int camera_set_preview_window(struct camera_device * device,
         return -1;
     }
 
+    window->set_usage(window,
+                      GRALLOC_USAGE_PMEM_PRIVATE_ADSP |
+                      GRALLOC_USAGE_SW_READ_OFTEN);
     if (window->set_buffers_geometry(window, preview_width,
                                      preview_height, hal_pixel_format)) {
         LOGE("%s: could not set buffers geometry to %s",
