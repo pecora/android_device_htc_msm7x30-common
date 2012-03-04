@@ -29,6 +29,8 @@ LOCAL_SHARED_LIBRARIES += libui libhardware libcamera_client
 LOCAL_SHARED_LIBRARIES += libcamera
 LOCAL_PRELINK_MODULE := false
 
+LOCAL_C_INCLUDES += $(TOP)/device/htc/msm7x30-common/camerahal
+
 ifeq ($(BOARD_HAVE_HTC_FFC), true)
 LOCAL_CFLAGS += -DBOARD_HAVE_HTC_FFC
 endif
