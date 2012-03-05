@@ -31,10 +31,10 @@
 #include <unistd.h>
 
 #include <cutils/log.h>
-#include "overlay.h"
+#include <ui/7x30/Overlay.h>
 #include <camera/CameraParameters.h>
 #include <hardware/camera.h>
-#include "CameraHardwareInterface.h"
+#include "CameraHardware.h"
 
 using android::sp;
 using android::Overlay;
