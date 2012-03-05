@@ -81,8 +81,7 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm7x30 \
-    Camera
+    camera.msm7x30
 
 # QCOM OMX
 PRODUCT_PACKAGES += \
