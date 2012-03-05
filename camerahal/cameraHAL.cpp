@@ -16,10 +16,6 @@
  * limitations under the License.
  */
 
-/**
-* @file camera.cpp
-*/
-
 #define LOG_TAG "CameraHAL"
 
 #define MAX_CAMERAS_SUPPORTED 2
@@ -34,7 +30,7 @@
 #include <ui/7x30/Overlay.h>
 #include <camera/CameraParameters.h>
 #include <hardware/camera.h>
-#include "CameraHardware.h"
+#include "CameraHardwareInterface.h"
 
 using android::sp;
 using android::Overlay;
