@@ -26,7 +26,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.compbypass.enable=1 \
     debug.composition.type=dyn \
     wifi.interface = eth0 \
-    wifi.supplicant_scan_interval=120
+    wifi.supplicant_scan_interval=120 \
+    persist.sys.usb.config=mass_storage,adb \
+    persist.service.adb.enable=1
 
 PRODUCT_COPY_FILES += \
     device/htc/msm7x30-common/kernel/init.msm7x30.usb.rc:root/init.msm7x30.usb.rc
