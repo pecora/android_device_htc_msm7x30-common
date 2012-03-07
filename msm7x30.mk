@@ -21,6 +21,13 @@ $(call inherit-product-if-exists, vendor/twisted/google-vendor.mk)
 # Inherit Language Files
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    com.qc.hardware=true \
+    ro.sf.compbypass.enable=1 \
+    debug.composition.type=dyn \
+    wifi.interface = eth0 \
+    wifi.supplicant_scan_interval=120
+
 PRODUCT_COPY_FILES += \
     device/htc/msm7x30-common/kernel/init.msm7x30.usb.rc:root/init.msm7x30.usb.rc
 
