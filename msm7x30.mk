@@ -23,8 +23,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true \
-    ro.sf.compbypass.enable=1 \
-    debug.composition.type=dyn \
+    debug.composition.type=mdp \
+    debug.qctwa.statusbar=1 \
+    debug.qctwa.preservebuf=1 \
     wifi.interface = eth0 \
     wifi.supplicant_scan_interval=120 \
     persist.sys.usb.config=mass_storage,adb \
