@@ -666,9 +666,6 @@ int camera_set_parameters(struct camera_device * device, const char *params)
 
     dev = (priv_camera_device_t*) device;
 
-    String8 params_str8(params);
-    camParams.unflatten(params_str8);
-
     if (dev->cameraid == 1) {
 #ifdef REVERSE_FFC
         /* Change default parameters for the front camera */
@@ -681,6 +678,9 @@ int camera_set_parameters(struct camera_device * device, const char *params)
         return 0;
 #endif
     }
+
+    String8 params_str8(params);
+    camParams.unflatten(params_str8);
 
     rv = gCameraHals[dev->cameraid]->setParameters(camParams);
 
