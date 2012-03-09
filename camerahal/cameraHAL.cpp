@@ -183,7 +183,7 @@ static void wrap_queue_buffer_hook(void *data, void* buffer)
 			    GRALLOC_USAGE_SW_WRITE_MASK,
 			    0, 0, width, height, &vaddr)) {
         // the code below assumes YUV, not RGB
-	memcpy(vaddr, frame, width * height * 3 / 2);
+	memcpy(vaddr, frame, width * height * 3/2);
         //LOGD("%s: copy frame to gralloc buffer", __FUNCTION__);
     } else {
         LOGE("%s: could not lock gralloc buffer", __FUNCTION__);
@@ -668,19 +668,18 @@ int camera_set_parameters(struct camera_device * device, const char *params)
 
     String8 params_str8(params);
     camParams.unflatten(params_str8);
-    
-    if (dev->cameraid == 1) {
-    
-#if defined(BOARD_USE_REVERSE_FFC)
 
+    if (dev->cameraid == 1) {
+#ifdef REVERSE_FFC
         /* Change default parameters for the front camera */
         camParams.set("front-camera-mode", "reverse"); // default is "mirror"
-
-#endif
-
+        rv = gCameraHals[dev->cameraid]->setParameters(camParams);
+        return rv;
+#else
+        /* Change default parameters for the front camera */
         LOGD("Skipping setParameters for FFC");
         return 0;
-    
+#endif
     }
 
     rv = gCameraHals[dev->cameraid]->setParameters(camParams);
@@ -860,7 +859,7 @@ int camera_device_open(const hw_module_t* module, const char* name,
             goto fail;
         }
 
-#ifdef BOARD_HAVE_HTC_FFC
+#ifdef HTC_FFC
 #define HTC_SWITCH_CAMERA_FILE_PATH "/sys/android_camera2/htcwc"
 
         char htc_buffer[16];

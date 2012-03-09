@@ -24,19 +24,18 @@ LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES := cameraHAL.cpp
-LOCAL_C_INCLUDES += $(TOP)/frameworks/base/include
+LOCAL_C_INCLUDES := $(TOP)/frameworks/base/include
+
 LOCAL_SHARED_LIBRARIES := liblog libutils libcutils
 LOCAL_SHARED_LIBRARIES += libui libhardware libcamera_client
 LOCAL_SHARED_LIBRARIES += libcamera
 LOCAL_PRELINK_MODULE := false
 
-LOCAL_C_INCLUDES += $(TOP)/device/htc/msm7x30-common/camerahal
-
 ifeq ($(BOARD_HAVE_HTC_FFC), true)
-LOCAL_CFLAGS += -DBOARD_HAVE_HTC_FFC
+    LOCAL_CFLAGS += -DHTC_FFC
 endif
 ifeq ($(BOARD_USE_REVERSE_FFC), true)
-LOCAL_CFLAGS += -DBOARD_USE_REVERSE_FFC
+    LOCAL_CFLAGS += -DREVERSE_FFC
 endif
 
 include $(BUILD_SHARED_LIBRARY)
