@@ -72,7 +72,7 @@ BOARD_USES_QCOM_LIBRPC := true
 BOARD_USES_QCOM_GPS := true
 BOARD_USE_QCOM_PMEM := true
 BOARD_USES_LEGACY_QCOM := true
-ifndef BOARD_USES_AUDIO_LEGACY
+ifndef BOARD_USES_LEGACY_QCOM
     BOARD_USES_QCOM_AUDIO_SPEECH := true
 endif
 BOARD_USES_QCOM_AUDIO_VOIPMUTE := true
@@ -83,7 +83,11 @@ DYNAMIC_SHARED_LIBV8SO := true
 # Workaround for speedy broken overlay scaling
 BOARD_OVERLAY_MINIFICATION_LIMIT := 2
 
-BOARD_USES_7X30_OVERLAY := true
+# TARGET_DZO_CAMERA := true
+ifndef TARGET_DZO_CAMERA
+    TARGET_7X30_OVERLAY := true
+endif
+
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 

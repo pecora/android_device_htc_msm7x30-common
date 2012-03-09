@@ -14,6 +14,8 @@
 
 ifeq ($(TARGET_BOARD_PLATFORM),msm7x30)
 
+ifneq ($(TARGET_DZO_CAMERA),true)
+
 LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -39,5 +41,7 @@ ifeq ($(BOARD_USE_REVERSE_FFC), true)
 endif
 
 include $(BUILD_SHARED_LIBRARY)
+
+endif
 
 endif
