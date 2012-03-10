@@ -83,7 +83,7 @@ DYNAMIC_SHARED_LIBV8SO := true
 # Workaround for speedy broken overlay scaling
 BOARD_OVERLAY_MINIFICATION_LIMIT := 2
 
-# TARGET_DZO_CAMERA := true
+TARGET_DZO_CAMERA := true
 ifndef TARGET_DZO_CAMERA
     TARGET_7X30_OVERLAY := true
 endif
