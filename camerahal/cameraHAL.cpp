@@ -26,10 +26,13 @@
 #include <string.h>
 #include <unistd.h>
 
+#include <utils/Errors.h>
 #include <cutils/log.h>
-#include <ui/7x30/Overlay.h>
+#include <ui/Overlay.h>
 #include <camera/CameraParameters.h>
 #include <hardware/camera.h>
+#include <binder/IMemory.h>
+#include <hardware/gralloc.h>
 #include "CameraHardwareInterface.h"
 
 using android::sp;
@@ -512,20 +515,23 @@ int camera_preview_enabled(struct camera_device * device)
 
 int camera_store_meta_data_in_buffers(struct camera_device * device, int enable)
 {
-    int rv = -EINVAL;
-    priv_camera_device_t* dev = NULL;
-
-    LOGD("%s", __FUNCTION__);
-
-    if(!device)
-        return rv;
-
-    dev = (priv_camera_device_t*) device;
-
-    //  TODO: meta data buffer not current supported
-    //rv = gCameraHals[dev->cameraid]->storeMetaDataInBuffers(enable);
-    return rv;
-    //return enable ? android::INVALID_OPERATION: android::OK;
+    /*
+     int rv = -EINVAL;
+     priv_camera_device_t* dev = NULL;
+     
+     LOGD("%s", __FUNCTION__);
+     
+     if(!device)
+     return rv;
+     
+     dev = (priv_camera_device_t*) device;
+     
+     //  TODO: meta data buffer not current supported
+     //rv = gCameraHals[dev->cameraid]->storeMetaDataInBuffers(enable);
+     return rv;
+     //return enable ? android::INVALID_OPERATION: android::OK;
+     */
+    return android::INVALID_OPERATION;
 }
 
 int camera_start_recording(struct camera_device * device)

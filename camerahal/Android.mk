@@ -12,9 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_BOARD_PLATFORM),msm7x30)
-
-ifneq ($(TARGET_DZO_CAMERA),true)
+ifeq ($(TARGET_SENSE_CAMERA),true)
 
 LOCAL_PATH:= $(call my-dir)
 
@@ -41,7 +39,5 @@ ifeq ($(BOARD_USE_REVERSE_FFC), true)
 endif
 
 include $(BUILD_SHARED_LIBRARY)
-
-endif
 
 endif
