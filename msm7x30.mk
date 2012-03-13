@@ -54,6 +54,10 @@ PRODUCT_COPY_FILES += \
     device/htc/msm7x30-common/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     device/htc/msm7x30-common/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
 
+# bootanimation
+PRODUCT_COPY_FILES += \
+    device/htc/msm7x30-common/system/media/bootanimation.zip:system/media/bootanimation.zip
+
 # egl config file
 PRODUCT_COPY_FILES += \
     device/htc/msm7x30-common/system/etc/egl.cfg:system/etc/egl.cfg
