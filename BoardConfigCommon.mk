@@ -83,7 +83,7 @@ DYNAMIC_SHARED_LIBV8SO := true
 # Workaround for speedy broken overlay scaling
 BOARD_OVERLAY_MINIFICATION_LIMIT := 2
 
-TARGET_SENSE_CAMERA := true
+COMMON_GLOBAL_CFLAGS += -DBYPASS_OFFSET
 
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 
