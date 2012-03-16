@@ -58,10 +58,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/htc/msm7x30-common/system/media/bootanimation.zip:system/media/bootanimation.zip
 
-# egl config file
-PRODUCT_COPY_FILES += \
-    device/htc/msm7x30-common/system/etc/egl.cfg:system/etc/egl.cfg
-
 # media config xml file
 PRODUCT_COPY_FILES += \
     device/htc/msm7x30-common/system/etc/media_profiles.xml:system/etc/media_profiles.xml

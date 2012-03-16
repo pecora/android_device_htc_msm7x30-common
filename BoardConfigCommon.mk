@@ -91,7 +91,7 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 BOARD_VENDOR_QCOM_AMSS_VERSION := 1200
 
-BOARD_EGL_CFG := device/htc/msm7x30-common/system/etc/egl.cfg
+BOARD_EGL_CFG := vendor/qcom/system/lib/egl/egl.cfg
 
 BOARD_OVERLAY_FORMAT_YCbCr_420_SP := true
 
