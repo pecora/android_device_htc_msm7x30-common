@@ -467,11 +467,14 @@ void CameraHAL_FixupParams(android::CameraParameters &camParams)
         camParams.set("touchAfAec-dx","100");
         camParams.set("touchAfAec-dy","100");
     }
-        camParams.set("num-snaps-per-shutter", "1");
-        camParams.set("zoom-supported", "true");
-        camParams.set("video-zoom-support", "true");
-        camParams.set("video-stabilization-supported", "true");
-        camParams.set("capture-burst-interval-supported", "false");
+    camParams.set("num-snaps-per-shutter", "1");
+    camParams.set("zoom-supported", "true");
+    camParams.set("video-zoom-support", "true");
+    camParams.set("video-stabilization-supported", "true");
+    camParams.set("capture-burst-interval-supported", "false");
+#endif
+#ifdef MISALIGNED
+    camParams.set(CameraParameters::KEY_ROTATION, 0);
 #endif
 }
 
