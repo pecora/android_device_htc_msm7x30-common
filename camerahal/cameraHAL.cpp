@@ -406,6 +406,9 @@ static String8 create_values_str(const str_map *values, int len) {
 
 void CameraHAL_FixupParams(android::CameraParameters &camParams)
 {
+    if (!camParams.get(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO)) {
+        camParams.set(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, "640x480");
+    }
 #ifdef CAF_PARAMS
     static const str_map effects[] = {
         { CameraParameters::EFFECT_NONE,       0 },
@@ -472,9 +475,6 @@ void CameraHAL_FixupParams(android::CameraParameters &camParams)
     camParams.set("video-zoom-support", "true");
     camParams.set("video-stabilization-supported", "true");
     camParams.set("capture-burst-interval-supported", "false");
-    if (!camParams.get(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO)) {
-        camParams.set(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, "640x480");
-    }
 #endif
 #ifdef MISALIGNED
     camParams.set(CameraParameters::KEY_ROTATION, 0);
