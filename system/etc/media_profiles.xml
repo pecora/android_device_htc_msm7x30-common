@@ -89,28 +89,28 @@
     <!-- Each camcorder profile defines a set of predefined configuration parameters -->
     <CamcorderProfiles cameraId="0">
 
-        <EncoderProfile quality="qvga" fileFormat="3gp" duration="60">
-            <Video codec="m4v"
-                   bitRate="128000"
-                   width="320"
-                   height="240"
-                   frameRate="15" />
-            <Audio codec="amrnb"
-                   bitRate="12200"
-                   sampleRate="8000"
-                   channels="1" />
+        <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                    bitRate="8000000"
+                    width="1920"
+                    height="1080"
+                    frameRate="30" />
+            <Audio codec="aac"
+                    bitRate="96000"
+                    sampleRate="48000"
+                    channels="1" />
         </EncoderProfile>
 
-        <EncoderProfile quality="cif" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="1200000"
-                   width="352"
-                   height="288"
-                   frameRate="30" />
+                    bitRate="8000000"
+                    width="1280"
+                    height="720"
+                    frameRate="30" />
             <Audio codec="aac"
-                   bitRate="96000"
-                   sampleRate="48000"
-                   channels="1" />
+                    bitRate="96000"
+                    sampleRate="48000"
+                    channels="1" />
         </EncoderProfile>
 
         <EncoderProfile quality="480p" fileFormat="mp4" duration="30">
@@ -125,68 +125,88 @@
                    channels="1" />
         </EncoderProfile>
 
-        <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="8000000"
-                   width="1280"
-                   height="720"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="96000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-
-        <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="fwvga" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="192000"
-                   width="176"
-                   height="144"
-                   frameRate="30" />
-            <!-- audio setting is ignored -->
-            <Audio codec="amrnb"
-                   bitRate="12200"
-                   sampleRate="8000"
-                   channels="1" />
-        </EncoderProfile>
-
-        <EncoderProfile quality="timelapsecif" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="1200000"
-                   width="352"
-                   height="288"
-                   frameRate="30" />
-            <!-- audio setting is ignored -->
-            <Audio codec="aac"
-                   bitRate="96000"
-                   sampleRate="48000"
-                   channels="1" />
-        </EncoderProfile>
-
-        <EncoderProfile quality="timelapse480p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="5000000"
-                   width="720"
+                   width="854"
                    height="480"
                    frameRate="30" />
-            <!-- audio setting is ignored -->
             <Audio codec="aac"
-                   bitRate="96000"
-                   sampleRate="48000"
-                   channels="1" />
+                    bitRate="96000"
+                    sampleRate="48000"
+                    channels="1" />
         </EncoderProfile>
 
-        <EncoderProfile quality="timelapse720p" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="wvga" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="1200000"
+                   width="800"
+                   height="480"
+                   frameRate="30" />
+            <Audio codec="aac"
+                    bitRate="96000"
+                    sampleRate="48000"
+                    channels="1" />
+        </EncoderProfile>
+
+        <EncoderProfile quality="vga" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                   bitRate="5000000"
+                   width="640"
+                   height="480"
+                   frameRate="30" />
+            <Audio codec="aac"
+                    bitRate="96000"
+                    sampleRate="48000"
+                    channels="1" />
+        </EncoderProfile>
+
+        <EncoderProfile quality="wqvga" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="8000000"
-                   width="1280"
-                   height="720"
-                   frameRate="30" />
-            <!-- audio setting is ignored -->
-            <Audio codec="aac"
-                   bitRate="96000"
-                   sampleRate="48000"
-                   channels="1" />
+                   width="400"
+                   height="240"
+                   frameRate="15" />
+            <Audio codec="amrnb"
+                    bitRate="12200"
+                    sampleRate="8000"
+                    channels="1" />
+        </EncoderProfile>
+
+        <EncoderProfile quality="cif" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                    bitRate="1200000"
+                    width="352"
+                    height="288"
+                    frameRate="30" />
+            <Audio codec="amrnb"
+                    bitRate="12200"
+                    sampleRate="8000"
+                    channels="1" />
+        </EncoderProfile>
+
+        <EncoderProfile quality="qvga" fileFormat="3gp" duration="60">
+            <Video codec="m4v"
+                    bitRate="128000"
+                    width="320"
+                    height="240"
+                    frameRate="15" />
+            <Audio codec="amrnb"
+                    bitRate="12200"
+                    sampleRate="8000"
+                    channels="1" />
+        </EncoderProfile>
+
+        <EncoderProfile quality="qcif" fileFormat="mp4" duration="30">
+            <Video codec="h264"
+                    bitRate="1200000"
+                    width="176"
+                    height="144"
+                    frameRate="14" />
+            <Audio codec="amrnb"
+                    bitRate="12200"
+                    sampleRate="8000"
+                    channels="1" />
         </EncoderProfile>
 
         <ImageEncoding quality="95" />

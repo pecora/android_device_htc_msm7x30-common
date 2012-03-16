@@ -23,6 +23,9 @@ endif
 ifeq ($(BOARD_USE_REVERSE_FFC), true)
     LOCAL_CFLAGS += -DREVERSE_FFC
 endif
+ifeq ($(TARGET_USE_CAF_PARAMS), true)
+    LOCAL_CFLAGS += -DCAF_PARAMS
+endif
 
 include $(BUILD_SHARED_LIBRARY)
 

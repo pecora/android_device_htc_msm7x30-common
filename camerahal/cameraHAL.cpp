@@ -71,7 +71,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          version_major: 1,
          version_minor: 0,
          id: CAMERA_HARDWARE_MODULE_ID,
-         name: "Ace CameraHal Module",
+         name: "7x30 CameraHal Module",
          author: "Zhibin Wu",
          methods: &camera_module_methods,
          dso: NULL, /* remove compilation warnings */
@@ -118,9 +118,6 @@ static struct {
     {0x0000, "CAMERA_MSG_ALL_MSGS"}, //0xFFFF
     {0x0000, "NULL"},
 };
-
-static char  prefer_video_size[16]={0};
-static char  prefer_frame_rate[16]={0};
 
 static void dump_msg(const char *tag, int msg_type)
 {
@@ -390,6 +387,18 @@ static void wrap_data_callback_timestamp(nsecs_t timestamp, int32_t msg_type,
 
 }
 
+static String8 create_values_str(const str_map *values, int len) {
+    String8 str;
+    
+    if (len > 0) {
+        str.append(values[0].desc);
+    }
+    for (int i = 1; i < len; i++) {
+        str.append(",");
+        str.append(values[i].desc);
+    }
+    return str;
+}
 
 /*******************************************************************
  * implementation of priv_camera_device_ops functions
@@ -397,59 +406,73 @@ static void wrap_data_callback_timestamp(nsecs_t timestamp, int32_t msg_type,
 
 void CameraHAL_FixupParams(android::CameraParameters &camParams)
 {
-    const char *preview_sizes =
-    "1280x720,800x480,768x432,720x480,640x480,576x432,480x320,384x288,352x288,320x240,240x160,176x144";
-    const char *video_sizes = 
-    "1280x720,800x480,720x480,640x480,480x320,352x288,320x240,176x144";
-    const char *preferred_size = "640x480";
-    const char *preview_frame_rates  = "30,27,24,15";
-    const char *preferred_rate = "15";
-    const char *frame_rate_range = "15,30";
-    
-    camParams.set(android::CameraParameters::KEY_VIDEO_FRAME_FORMAT,
-                  android::CameraParameters::PIXEL_FORMAT_YUV420SP);
-    
-    if (!camParams.get(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES)) {
-        camParams.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_SIZES,
-                      preview_sizes);
+#ifdef CAF_PARAMS
+    static const str_map effects[] = {
+        { CameraParameters::EFFECT_NONE,       0 },
+        { CameraParameters::EFFECT_MONO,       1 },
+        { CameraParameters::EFFECT_NEGATIVE,   2 },
+        { CameraParameters::EFFECT_SOLARIZE,   3 },
+        { CameraParameters::EFFECT_SEPIA,      4 },
+        { CameraParameters::EFFECT_POSTERIZE,  5 },
+        { CameraParameters::EFFECT_WHITEBOARD, 6 },
+        { CameraParameters::EFFECT_BLACKBOARD, 7 },
+        { CameraParameters::EFFECT_AQUA,       8 }
+    };
+    static const str_map focus_modes[] = {
+        { CameraParameters::FOCUS_MODE_AUTO,     2 },
+        { CameraParameters::FOCUS_MODE_INFINITY, 3 },
+        { CameraParameters::FOCUS_MODE_NORMAL,   0 },
+        { CameraParameters::FOCUS_MODE_MACRO,    1 },
+        { CameraParameters::FOCUS_MODE_CONTINUOUS_PICTURE, 0 },
+        { CameraParameters::FOCUS_MODE_CONTINUOUS_VIDEO, 3 }
+    };
+    static const str_map iso[] = {
+        { CameraParameters::ISO_AUTO,  0 },
+        { CameraParameters::ISO_HJR,   1 },
+        { CameraParameters::ISO_100,   2 },
+        { CameraParameters::ISO_200,   3 },
+        { CameraParameters::ISO_400,   4 },
+        { CameraParameters::ISO_800,   5 },
+        { CameraParameters::ISO_1600,  6 }
+    };
+    static const str_map touchafaec[] = {
+        { CameraParameters::TOUCH_AF_AEC_OFF, FALSE },
+        { CameraParameters::TOUCH_AF_AEC_ON, TRUE }
+    };
+    if (!camParams.get(CameraParameters::KEY_MAX_SHARPNESS)) {
+        camParams.set(CameraParameters::KEY_MAX_SHARPNESS, "30");
     }
-    
-    if (!camParams.get(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES)) {
-        camParams.set(android::CameraParameters::KEY_SUPPORTED_VIDEO_SIZES,
-                      video_sizes);
+    if (!camParams.get(CameraParameters::KEY_MAX_CONTRAST)) {
+        camParams.set(CameraParameters::KEY_MAX_CONTRAST, "10");
     }
-    
-    if (!camParams.get(android::CameraParameters::KEY_VIDEO_SIZE)) {
-        if(strlen(prefer_video_size)>0) {
-            camParams.set(CameraParameters::KEY_VIDEO_SIZE, prefer_video_size);
-        } else {
-            camParams.set(CameraParameters::KEY_VIDEO_SIZE, preferred_size);
-        }
+    if (!camParams.get(CameraParameters::KEY_MAX_SATURATION)) {
+        camParams.set(CameraParameters::KEY_MAX_SATURATION, "10");
     }
-    
-    if (!camParams.get(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO)) {
-        camParams.set(android::CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO,
-                      preferred_size);
+    static String8 effect_values = create_values_str(effects, sizeof(effects) / sizeof(str_map));
+    static String8 focus_mode_values = create_values_str(focus_modes, sizeof(focus_modes) / sizeof(str_map));
+    static String8 iso_values = create_values_str(iso, sizeof(iso)/sizeof(str_map));
+    static String8 touchafaec_values = create_values_str(touchafaec, sizeof(touchafaec)/sizeof(str_map));
+    if (!camParams.get(CameraParameters::KEY_SUPPORTED_EFFECTS)) {
+        camParams.set(CameraParameters::KEY_SUPPORTED_EFFECTS, effect_values);
     }
-    
-    if (!camParams.get(android::CameraParameters::KEY_SUPPORTED_PREVIEW_FRAME_RATES)) {
-        camParams.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_FRAME_RATES,
-                      preview_frame_rates);
+    if (!camParams.get(CameraParameters::KEY_SUPPORTED_FOCUS_MODES)) {
+       camParams.set(CameraParameters::KEY_SUPPORTED_FOCUS_MODES,
+                    focus_mode_values);
     }
-    
-    if (!camParams.get(android::CameraParameters::KEY_PREVIEW_FRAME_RATE)) {
-        if(strlen(prefer_frame_rate)>0) {
-            camParams.set(CameraParameters::KEY_PREVIEW_FRAME_RATE, prefer_frame_rate);
-        } else {
-            camParams.set(CameraParameters::KEY_PREVIEW_FRAME_RATE, preferred_rate);
-        }
+    if (!camParams.get(CameraParameters::KEY_SUPPORTED_ISO_MODES)) {
+        camParams.set(CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values);
     }
-
-    if (!camParams.get(android::CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE)) {
-        LOGD("Setting KEY_PREVIEW_FPS_RANGE: %s\n", frame_rate_range);
-        camParams.set(android::CameraParameters::KEY_SUPPORTED_PREVIEW_FPS_RANGE,
-                     frame_rate_range);
+    if (!camParams.get(CameraParameters::KEY_SUPPORTED_TOUCH_AF_AEC)) {
+        camParams.set(CameraParameters::KEY_SUPPORTED_TOUCH_AF_AEC, touchafaec_values);
+        camParams.set("touchAfAec-dx","100");
+        camParams.set("touchAfAec-dy","100");
     }
+        camParams.set("num-snaps-per-shutter", "1");
+        camParams.set("zoom-supported", "true");
+        camParams.set("video-zoom-support", "true");
+        camParams.set("video-stabilization-supported", "true");
+        camParams.set("capture-burst-interval-supported", "false");
+#endif
 }
 
 int camera_set_preview_window(struct camera_device * device,
@@ -856,18 +879,6 @@ int camera_set_parameters(struct camera_device * device, const char *params)
 #if 0
     camParams.dump();
 #endif
-
-    if(camParams.get(CameraParameters::KEY_VIDEO_SIZE)) {
-        strcpy(prefer_video_size,camParams.get(CameraParameters::KEY_VIDEO_SIZE));
-        //camParams.set(CameraParameters::KEY_PREVIEW_SIZE, prefer_video_size);
-        //QiSS ME for 2.3 libcamera
-    }
-
-    camParams.set(CameraParameters::KEY_ROTATION, 0);
-
-    if(camParams.get(CameraParameters::KEY_PREVIEW_FRAME_RATE)) {
-       strcpy(prefer_frame_rate,camParams.get(CameraParameters::KEY_PREVIEW_FRAME_RATE));
-    }
 
     rv = gCameraHals[dev->cameraid]->setParameters(camParams);
 
