@@ -426,9 +426,6 @@ void CameraHAL_FixupParams(android::CameraParameters &camParams)
     camParams.set("video-stabilization-supported", "true");
     camParams.set("capture-burst-interval-supported", "false");
 #endif
-#ifdef MISALIGNED
-    camParams.set(CameraParameters::KEY_ROTATION, 0);
-#endif
 }
 
 int camera_set_preview_window(struct camera_device * device,
@@ -492,7 +489,7 @@ int camera_set_preview_window(struct camera_device * device,
         return -1;
     }
 
-#ifndef MISSING_EGL_PIXEL_FORMAT_YV12
+#ifdef MISSING_CAM_EXTERNAL_IMAGE
     window->set_usage(window, GRALLOC_USAGE_PMEM_PRIVATE_ADSP | GRALLOC_USAGE_SW_READ_OFTEN);
 #endif
 

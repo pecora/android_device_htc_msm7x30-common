@@ -26,9 +26,6 @@ endif
 ifeq ($(TARGET_USE_CAF_PARAMS), true)
     LOCAL_CFLAGS += -DCAF_PARAMS
 endif
-ifeq ($(TARGET_MISALIGNED), true)
-    LOCAL_CFLAGS += -DMISALIGNED
-endif
 
 include $(BUILD_SHARED_LIBRARY)
 
