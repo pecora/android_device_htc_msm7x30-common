@@ -406,30 +406,20 @@ static String8 create_values_str(const str_map *values, int len) {
 
 void CameraHAL_FixupParams(android::CameraParameters &camParams)
 {
-    if (!camParams.get(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO)) {
-        camParams.set(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, "640x480");
-    }
+    camParams.set(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, "640x480");
 #ifdef CAF_PARAMS
-    if (!camParams.get(CameraParameters::KEY_MAX_SHARPNESS)) {
-        camParams.set(CameraParameters::KEY_MAX_SHARPNESS, "30");
-    }
-    if (!camParams.get(CameraParameters::KEY_MAX_CONTRAST)) {
-        camParams.set(CameraParameters::KEY_MAX_CONTRAST, "10");
-    }
-    if (!camParams.get(CameraParameters::KEY_MAX_SATURATION)) {
-        camParams.set(CameraParameters::KEY_MAX_SATURATION, "10");
-    }
+    camParams.set(CameraParameters::KEY_MAX_SHARPNESS, "30");
+    camParams.set(CameraParameters::KEY_MAX_CONTRAST, "10");
+    camParams.set(CameraParameters::KEY_MAX_SATURATION, "10");
     static String8 touchafaec_values;
     static const str_map touchafaec[] = {
         { CameraParameters::TOUCH_AF_AEC_OFF, FALSE },
         { CameraParameters::TOUCH_AF_AEC_ON, TRUE }
     };
     touchafaec_values = create_values_str(touchafaec, sizeof(touchafaec)/sizeof(str_map));
-    if (!camParams.get(CameraParameters::KEY_SUPPORTED_TOUCH_AF_AEC)) {
-        camParams.set(CameraParameters::KEY_SUPPORTED_TOUCH_AF_AEC, touchafaec_values);
-        camParams.set("touchAfAec-dx","100");
-        camParams.set("touchAfAec-dy","100");
-    }
+    camParams.set(CameraParameters::KEY_SUPPORTED_TOUCH_AF_AEC, touchafaec_values);
+    camParams.set("touchAfAec-dx","100");
+    camParams.set("touchAfAec-dy","100");
     camParams.set("num-snaps-per-shutter", "1");
     camParams.set("zoom-supported", "true");
     camParams.set("video-zoom-support", "true");
