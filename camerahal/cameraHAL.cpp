@@ -542,7 +542,9 @@ int camera_set_preview_window(struct camera_device * device,
         return -1;
     }
 
+#ifndef MISSING_EGL_PIXEL_FORMAT_YV12
     window->set_usage(window, GRALLOC_USAGE_PMEM_PRIVATE_ADSP | GRALLOC_USAGE_SW_READ_OFTEN);
+#endif
 
     if (window->set_buffers_geometry(window, preview_width,
                                      preview_height, hal_pixel_format)) {
