@@ -410,38 +410,6 @@ void CameraHAL_FixupParams(android::CameraParameters &camParams)
         camParams.set(CameraParameters::KEY_PREFERRED_PREVIEW_SIZE_FOR_VIDEO, "640x480");
     }
 #ifdef CAF_PARAMS
-    static const str_map effects[] = {
-        { CameraParameters::EFFECT_NONE,       0 },
-        { CameraParameters::EFFECT_MONO,       1 },
-        { CameraParameters::EFFECT_NEGATIVE,   2 },
-        { CameraParameters::EFFECT_SOLARIZE,   3 },
-        { CameraParameters::EFFECT_SEPIA,      4 },
-        { CameraParameters::EFFECT_POSTERIZE,  5 },
-        { CameraParameters::EFFECT_WHITEBOARD, 6 },
-        { CameraParameters::EFFECT_BLACKBOARD, 7 },
-        { CameraParameters::EFFECT_AQUA,       8 }
-    };
-    static const str_map focus_modes[] = {
-        { CameraParameters::FOCUS_MODE_AUTO,     2 },
-        { CameraParameters::FOCUS_MODE_INFINITY, 3 },
-        { CameraParameters::FOCUS_MODE_NORMAL,   0 },
-        { CameraParameters::FOCUS_MODE_MACRO,    1 },
-        { CameraParameters::FOCUS_MODE_CONTINUOUS_PICTURE, 0 },
-        { CameraParameters::FOCUS_MODE_CONTINUOUS_VIDEO, 3 }
-    };
-    static const str_map iso[] = {
-        { CameraParameters::ISO_AUTO,  0 },
-        { CameraParameters::ISO_HJR,   1 },
-        { CameraParameters::ISO_100,   2 },
-        { CameraParameters::ISO_200,   3 },
-        { CameraParameters::ISO_400,   4 },
-        { CameraParameters::ISO_800,   5 },
-        { CameraParameters::ISO_1600,  6 }
-    };
-    static const str_map touchafaec[] = {
-        { CameraParameters::TOUCH_AF_AEC_OFF, FALSE },
-        { CameraParameters::TOUCH_AF_AEC_ON, TRUE }
-    };
     if (!camParams.get(CameraParameters::KEY_MAX_SHARPNESS)) {
         camParams.set(CameraParameters::KEY_MAX_SHARPNESS, "30");
     }
@@ -451,20 +419,12 @@ void CameraHAL_FixupParams(android::CameraParameters &camParams)
     if (!camParams.get(CameraParameters::KEY_MAX_SATURATION)) {
         camParams.set(CameraParameters::KEY_MAX_SATURATION, "10");
     }
-    static String8 effect_values = create_values_str(effects, sizeof(effects) / sizeof(str_map));
-    static String8 focus_mode_values = create_values_str(focus_modes, sizeof(focus_modes) / sizeof(str_map));
-    static String8 iso_values = create_values_str(iso, sizeof(iso)/sizeof(str_map));
-    static String8 touchafaec_values = create_values_str(touchafaec, sizeof(touchafaec)/sizeof(str_map));
-    if (!camParams.get(CameraParameters::KEY_SUPPORTED_EFFECTS)) {
-        camParams.set(CameraParameters::KEY_SUPPORTED_EFFECTS, effect_values);
-    }
-    if (!camParams.get(CameraParameters::KEY_SUPPORTED_FOCUS_MODES)) {
-       camParams.set(CameraParameters::KEY_SUPPORTED_FOCUS_MODES,
-                    focus_mode_values);
-    }
-    if (!camParams.get(CameraParameters::KEY_SUPPORTED_ISO_MODES)) {
-        camParams.set(CameraParameters::KEY_SUPPORTED_ISO_MODES, iso_values);
-    }
+    static String8 touchafaec_values;
+    static const str_map touchafaec[] = {
+        { CameraParameters::TOUCH_AF_AEC_OFF, FALSE },
+        { CameraParameters::TOUCH_AF_AEC_ON, TRUE }
+    };
+    touchafaec_values = create_values_str(touchafaec, sizeof(touchafaec)/sizeof(str_map));
     if (!camParams.get(CameraParameters::KEY_SUPPORTED_TOUCH_AF_AEC)) {
         camParams.set(CameraParameters::KEY_SUPPORTED_TOUCH_AF_AEC, touchafaec_values);
         camParams.set("touchAfAec-dx","100");
